@@ -15,8 +15,8 @@ process STAR_INDEX_REFERENCE {
     STAR \\
             --runMode genomeGenerate \\
             --genomeDir star/ \\
-            --genomeFastaFiles $reference \\
-            --sjdbGTFfile $annotation \\
+            --genomeFastaFiles ${reference} \\
+            --sjdbGTFfile ${annotation} \\
             --runThreadN ${params.threads} \\
 	
     """
