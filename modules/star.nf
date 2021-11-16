@@ -27,6 +27,8 @@ process STAR_INDEX_REFERENCE {
 process STAR_ALIGN {
     label 'star'
     publishDir params.outdir
+    memory '50 GB'
+    executor 'k8s'
     
     input:
     tuple val(sample_name), path(reads)
@@ -41,6 +43,7 @@ process STAR_ALIGN {
     STAR \\
         --genomeDir . \\
         --readFilesIn ${reads[0]} ${reads[1]}  \\
+        --readFilesCommand gunzip -c \\
         --runThreadN ${params.threads} \\
         --outFileNamePrefix ${sample_name}. \\
         --sjdbGTFfile ${annotation}
