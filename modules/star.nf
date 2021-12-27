@@ -54,15 +54,14 @@ process STAR_ALIGN {
 
 	elif [[ $STRANDNESS == "unstranded" ]]; then
 		STAR \\
-        		--genomeDir . \\
-        		--readFilesIn !{reads[0]} !{reads[1]}  \\
-        		--readFilesCommand gunzip -c \\
+            --genomeDir . \\
+            --readFilesIn !{reads[0]} !{reads[1]}  \\
 			--alignSoftClipAtReferenceEnds No \\
 			--outSAMstrandField intronMotif \\
-			--outFilterIntronMotifs RemoveNoncanonical
-        		--runThreadN !{params.threads} \\
-        		--outFileNamePrefix !{sample_name}. \\
-        		--sjdbGTFfile !{annotation} \\
+			--outFilterIntronMotifs RemoveNoncanonical \\
+        	--runThreadN !{params.threads} \\
+        	--outFileNamePrefix !{sample_name}. \\
+        	--sjdbGTFfile !{annotation} \\
 			--outSAMattrIHstart 0
 
 	else  
