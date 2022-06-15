@@ -1,8 +1,6 @@
 process STAR_INDEX_REFERENCE {
     label 'star'
     publishDir params.outdir
-    memory '50 GB'
-    executor 'k8s'
     
     input:
     path(reference)
@@ -27,8 +25,6 @@ process STAR_INDEX_REFERENCE {
 process STAR_ALIGN {
     label 'star'
     publishDir params.outdir
-    memory '50 GB'
-    executor 'k8s'
 
     input:
     env STRANDNESS
